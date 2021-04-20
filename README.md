@@ -8,9 +8,18 @@ You must have installed Flutter and Dart in your machine. For that, see the inst
 
 ## 📱 Current state
 
-This app is still being built, so its current snapshot is as the image below:
+This app is still being built, so its current snapshot is as the images below:
 
-<img src="https://github.com/SamillyNunes/dev_quiz_nlw5/blob/main/assets/readme/current_snapshot.jpg" height="400px">
+- Splash page:
+<img src="https://github.com/SamillyNunes/dev_quiz_nlw5/blob/main/assets/readme/splash-page.jpg" height="400px">
+
+
+- Home page:
+<img src="https://github.com/SamillyNunes/dev_quiz_nlw5/blob/main/assets/readme/home-page.jpg" height="400px">
+
+
+- Challenge page:
+<img src="https://github.com/SamillyNunes/dev_quiz_nlw5/blob/main/assets/readme/challenge-page.jpg" height="400px">
 
 ## 🎨 Design
 
