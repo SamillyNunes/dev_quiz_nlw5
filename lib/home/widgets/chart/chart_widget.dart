@@ -1,8 +1,16 @@
-import 'package:dev_quiz/core/app_colors.dart';
-import 'package:dev_quiz/core/core.dart';
 import 'package:flutter/material.dart';
 
+import 'package:dev_quiz/core/app_colors.dart';
+import 'package:dev_quiz/core/core.dart';
+
 class ChartWidget extends StatelessWidget {
+  final double percent;
+
+  const ChartWidget({
+    Key? key,
+    required this.percent,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +24,7 @@ class ChartWidget extends StatelessWidget {
               width: 80,
               child: CircularProgressIndicator(
                 strokeWidth: 10,
-                value: 0.75,
+                value: this.percent,
                 backgroundColor: AppColors.chartSecondary,
                 valueColor:
                     AlwaysStoppedAnimation<Color>(AppColors.chartPrimary),
@@ -25,7 +33,7 @@ class ChartWidget extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "75%",
+              "${(this.percent * 100).toInt()}%",
               style: AppTextStyles.heading,
             ),
           ),
