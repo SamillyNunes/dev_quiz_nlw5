@@ -22,6 +22,13 @@ class _ChallengePageState extends State<ChallengePage> {
   final controller = ChallengeController();
   final pageController = PageController();
 
+  void nextPage() {
+    pageController.nextPage(
+      duration: Duration(milliseconds: 100),
+      curve: Curves.linear,
+    );
+  }
+
   @override
   void initState() {
     pageController.addListener(
@@ -62,6 +69,7 @@ class _ChallengePageState extends State<ChallengePage> {
             .map(
               (question) => QuizWidget(
                 question: question,
+                onChanged: nextPage,
               ),
             )
             .toList(),
@@ -79,24 +87,18 @@ class _ChallengePageState extends State<ChallengePage> {
               Expanded(
                 child: NextButtonWidget.white(
                   label: "Pular",
-                  onTap: () {
-                    print("ok!");
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 100),
-                      curve: Curves.linear,
-                    );
-                  },
+                  onTap: nextPage,
                 ),
               ),
-              SizedBox(
-                width: 7,
-              ),
-              Expanded(
-                child: NextButtonWidget.green(
-                  label: "Confirmar",
-                  onTap: () {},
-                ),
-              ),
+              // SizedBox(
+              //   width: 7,
+              // ),
+              // Expanded(
+              //   child: NextButtonWidget.green(
+              //     label: "Confirmar",
+              //     onTap: () {},
+              //   ),
+              // ),
             ],
           ),
         ),
