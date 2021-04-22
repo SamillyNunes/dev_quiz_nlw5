@@ -6,65 +6,70 @@ class QuizCardWidget extends StatelessWidget {
   final String title;
   final int completed;
   final int totalQuestions;
+  final VoidCallback onTap;
 
   const QuizCardWidget({
     Key? key,
     required this.title,
     required this.completed,
     required this.totalQuestions,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.fromBorderSide(
-          BorderSide(
-            color: AppColors.border,
-          ),
-        ),
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            child: Image.asset(
-              AppImages.blocks,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border.fromBorderSide(
+            BorderSide(
+              color: AppColors.border,
             ),
           ),
-          SizedBox(
-            height: 24,
-          ),
-          Text(
-            this.title,
-            style: AppTextStyles.heading15,
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Text(
-                  "${this.completed} de ${this.totalQuestions}",
-                  style: AppTextStyles.body11,
-                ),
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              child: Image.asset(
+                AppImages.blocks,
               ),
-              Expanded(
-                flex: 2,
-                child: ProgressIndicatorWidget(
-                  value: this.completed / this.totalQuestions,
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Text(
+              this.title,
+              style: AppTextStyles.heading15,
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    "${this.completed} de ${this.totalQuestions}",
+                    style: AppTextStyles.body11,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                Expanded(
+                  flex: 2,
+                  child: ProgressIndicatorWidget(
+                    value: this.completed / this.totalQuestions,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

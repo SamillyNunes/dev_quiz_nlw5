@@ -1,11 +1,12 @@
 import 'package:dev_quiz/challenge/widgets/answer/answer_widget.dart';
 import 'package:dev_quiz/core/app_text_styles.dart';
+import 'package:dev_quiz/shared/models/question_model.dart';
 import 'package:flutter/material.dart';
 
 class QuizWidget extends StatelessWidget {
-  final String title;
+  final QuestionModel question;
 
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+  const QuizWidget({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class QuizWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Text(
-                title,
+                question.title,
                 style: AppTextStyles.heading,
               ),
             ),
@@ -29,24 +30,15 @@ class QuizWidget extends StatelessWidget {
           SizedBox(
             height: 24,
           ),
-          AnswerWidget(
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AnswerWidget(
-            isRight: true,
-            isSelected: true,
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AnswerWidget(
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AnswerWidget(
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
+          // esses tres pontinhos chamam "squid", que vai concatenar a lista
+          ...question.answers
+              .map(
+                (answer) => AnswerWidget(
+                  isRight: answer.isRight,
+                  title: answer.title,
+                ),
+              )
+              .toList(),
         ],
       ),
     );
