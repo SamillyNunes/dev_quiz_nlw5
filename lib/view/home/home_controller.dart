@@ -1,8 +1,9 @@
-import 'package:dev_quiz/home/home_repository.dart';
-import 'package:dev_quiz/home/home_state.dart';
-import 'package:dev_quiz/shared/models/quiz_model.dart';
-import 'package:dev_quiz/shared/models/user_model.dart';
+import 'package:dev_quiz/view/home/home_repository.dart';
+import 'package:dev_quiz/view/home/home_state.dart';
+import 'package:dev_quiz/view/shared/models/quiz_model.dart';
+import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
+
 
 class HomeController {
   // O value notifier eh um tipo de notificador advindo do proprio flutter, sem precisar de uma biblioteca

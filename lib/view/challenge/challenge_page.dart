@@ -1,13 +1,13 @@
-import 'package:dev_quiz/challenge/challenge_controller.dart';
+
 import 'package:dev_quiz/core/app_routes.dart';
-import 'package:dev_quiz/result/result_page.dart';
 import 'package:dev_quiz/routers/routers.dart';
+import 'package:dev_quiz/view/challenge/challenge_controller.dart';
+import 'package:dev_quiz/view/challenge/widgets/next_button/next_button_widget.dart';
+import 'package:dev_quiz/view/challenge/widgets/question_indicator/question_indicator_widget.dart';
+import 'package:dev_quiz/view/challenge/widgets/quiz/quiz_widget.dart';
+import 'package:dev_quiz/view/shared/models/question_model.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dev_quiz/challenge/widgets/next_button/next_button_widget.dart';
-import 'package:dev_quiz/challenge/widgets/question_indicator/question_indicator_widget.dart';
-import 'package:dev_quiz/challenge/widgets/quiz/quiz_widget.dart';
-import 'package:dev_quiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;

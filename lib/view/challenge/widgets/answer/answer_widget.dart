@@ -1,5 +1,5 @@
 import 'package:dev_quiz/core/core.dart';
-import 'package:dev_quiz/shared/models/answer_model.dart';
+import 'package:dev_quiz/view/shared/models/answer_model.dart';
 import 'package:flutter/material.dart';
 
 class AnswerWidget extends StatelessWidget {

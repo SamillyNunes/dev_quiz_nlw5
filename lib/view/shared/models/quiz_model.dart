@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dev_quiz/shared/models/question_model.dart';
+import 'package:dev_quiz/view/shared/models/question_model.dart';
 
 enum Level { facil, medio, dificil, perito }
 

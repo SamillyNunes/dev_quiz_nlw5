@@ -1,10 +1,10 @@
-import 'package:dev_quiz/result/result_page.dart';
+import 'package:dev_quiz/view/challenge/challenge_page.dart';
+import 'package:dev_quiz/view/home/home_page.dart';
+import 'package:dev_quiz/view/result/result_page.dart';
+import 'package:dev_quiz/view/shared/models/question_model.dart';
+import 'package:dev_quiz/view/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dev_quiz/challenge/challenge_page.dart';
-import 'package:dev_quiz/home/home_page.dart';
-import 'package:dev_quiz/shared/models/question_model.dart';
-import 'package:dev_quiz/splash/splash_page.dart';
 
 const String splashRoute = "/";
 const String homeRoute = "/home";
