@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 
 class QuizWidget extends StatefulWidget {
   final QuestionModel question;
-  final VoidCallback onChanged;
+  //se foi selecionado uma resposta certa/errada
+  // ValueChanged eh um tipo de funcao que devolve o valor atualizado da mudanca
+  final ValueChanged<bool> onAnswerSelected;
   const QuizWidget({
     Key? key,
     required this.question,
-    required this.onChanged,
+    required this.onAnswerSelected,
   }) : super(key: key);
 
   @override
@@ -50,11 +52,11 @@ class _QuizWidgetState extends State<QuizWidget> {
               isSelected: indexSelected == i,
               isDisabled: indexSelected !=
                   -1, //se for diferente de -1, ele ja clicou em alguem, logo n pode mais
-              onTap: () {
+              onTap: (valueIsRight) {
                 indexSelected = i;
                 setState(() {});
                 Future.delayed(Duration(seconds: 1))
-                    .then((value) => widget.onChanged());
+                    .then((_) => widget.onAnswerSelected(valueIsRight));
               },
             ),
         ],

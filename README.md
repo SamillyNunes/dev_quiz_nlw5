@@ -25,6 +25,7 @@ This app is still being built, so its current snapshot is as the images below:
 
 The design was created by Rockeatset and can be found at https://www.figma.com/file/R9It1jsp9U1qDJc7tUAfUW/DevQuiz-Copy?node-id=0%3A1
 
+
 ## 📌 Find me!
 - Linkedin: https://www.linkedin.com/in/samillynunes19/
 - Instagram: https://www.instagram.com/samyy_nunes/

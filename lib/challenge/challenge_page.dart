@@ -1,4 +1,5 @@
 import 'package:dev_quiz/challenge/challenge_controller.dart';
+import 'package:dev_quiz/result/result_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/challenge/widgets/next_button/next_button_widget.dart';
@@ -8,11 +9,11 @@ import 'package:dev_quiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
+  final String quizTitle;
 
-  const ChallengePage({
-    Key? key,
-    required this.questions,
-  }) : super(key: key);
+  const ChallengePage(
+      {Key? key, required this.questions, required this.quizTitle})
+      : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -28,6 +29,13 @@ class _ChallengePageState extends State<ChallengePage> {
         duration: Duration(milliseconds: 100),
         curve: Curves.linear,
       );
+  }
+
+  void onSelected(bool isRight) {
+    if (isRight) {
+      controller.qtdRightAnswers++;
+    }
+    nextPage();
   }
 
   @override
@@ -70,7 +78,9 @@ class _ChallengePageState extends State<ChallengePage> {
             .map(
               (question) => QuizWidget(
                 question: question,
-                onChanged: nextPage,
+                onAnswerSelected: (valueIsRight) {
+                  onSelected(valueIsRight);
+                },
               ),
             )
             .toList(),
@@ -103,7 +113,16 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.green(
                       label: "Confirmar",
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ResultPage(
+                              quizTitle: widget.quizTitle,
+                              questionsLenght: widget.questions.length,
+                              result: controller.qtdRightAnswers,
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ),

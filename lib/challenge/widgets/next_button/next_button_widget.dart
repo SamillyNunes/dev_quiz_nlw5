@@ -32,7 +32,24 @@ class NextButtonWidget extends StatelessWidget {
   NextButtonWidget.white({required String label, required VoidCallback onTap})
       : this.backgroundColor = AppColors.white,
         this.fontColor = AppColors.grey,
-        this.borderColor = AppColors.border,
+        this.borderColor = Colors.transparent,
+        this.overlayColor = AppColors.lightGrey,
+        this.onTap = onTap,
+        this.label = label;
+
+  NextButtonWidget.purple({required String label, required VoidCallback onTap})
+      : this.backgroundColor = AppColors.purple,
+        this.fontColor = AppColors.white,
+        this.borderColor = AppColors.purple,
+        this.overlayColor = AppColors.purple,
+        this.onTap = onTap,
+        this.label = label;
+
+  NextButtonWidget.transparent(
+      {required String label, required VoidCallback onTap})
+      : this.backgroundColor = Colors.transparent,
+        this.fontColor = AppColors.grey,
+        this.borderColor = Colors.transparent,
         this.overlayColor = AppColors.lightGrey,
         this.onTap = onTap,
         this.label = label;
@@ -50,11 +67,11 @@ class NextButtonWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          side: MaterialStateProperty.all(
-            BorderSide(
-              color: AppColors.border,
-            ),
-          ),
+          // side: this.borderColor!=Colors.transparent ? MaterialStateProperty.all(
+          //   BorderSide(
+          //     color: AppColors.border,
+          //   ),
+          // ) : null,
           overlayColor: MaterialStateProperty.all(this.overlayColor),
         ),
         onPressed: this.onTap,
