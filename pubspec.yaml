@@ -11,6 +11,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.0.0
   share_plus: ^2.0.1 # para compartilhar dados entre a aplicacao e aplicativos de terceiros
+  google_sign_in: ^5.0.2
+  firebase_core: ^1.0.4
+  firebase_auth: ^1.1.1
 
 dev_dependencies:
   flutter_test:

@@ -4,7 +4,6 @@ import 'package:dev_quiz/view/shared/models/quiz_model.dart';
 import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeController {
   // O value notifier eh um tipo de notificador advindo do proprio flutter, sem precisar de uma biblioteca
   final ValueNotifier<HomeState> stateNotifier =
@@ -12,18 +11,18 @@ class HomeController {
   set state(HomeState state) => stateNotifier.value = state;
   HomeState get state => stateNotifier.value;
 
-  UserModel? user;
+  // UserModel? user;
   List<QuizModel>? quizzes;
 
   final repository = HomeRepository();
 
-  void getUser() async {
-    state = HomeState.loading;
+  // void getUser() async {
+  //   state = HomeState.loading;
 
-    user = await repository.getUser();
+  //   user = await repository.getUser();
 
-    state = HomeState.success;
-  }
+  //   state = HomeState.success;
+  // }
 
   void getQuizzes() async {
     state = HomeState.loading;

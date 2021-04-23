@@ -6,10 +6,15 @@ import 'package:dev_quiz/view/home/home_state.dart';
 import 'package:dev_quiz/view/home/widgets/appbar/app_bar_widget.dart';
 import 'package:dev_quiz/view/home/widgets/level_button/level_button_widget.dart';
 import 'package:dev_quiz/view/home/widgets/quiz_card/quiz_card_widget.dart';
+import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  final UserModel user;
+  HomePage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -20,7 +25,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    controller.getUser();
     controller.getQuizzes();
     // adicionando um recurso que vai ficar observando atualizacoes da variavel statenotifier
     controller.stateNotifier.addListener(() {
@@ -35,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       return Scaffold(
         appBar: AppBarWidget(
           // perceba que aqui usamos o ! para garantir ao dart que o usuario nao sera nulo
-          user: controller.user!,
+          user: widget.user,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(

@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
 import 'package:dev_quiz/view/challenge/challenge_page.dart';
 import 'package:dev_quiz/view/home/home_page.dart';
 import 'package:dev_quiz/view/login/login_page.dart';
 import 'package:dev_quiz/view/result/result_page.dart';
 import 'package:dev_quiz/view/shared/models/question_model.dart';
+import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:dev_quiz/view/splash/splash_page.dart';
-import 'package:flutter/material.dart';
 
 const String splashRoute = "/";
 const String homeRoute = "/home";
@@ -46,7 +48,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => LoginPage());
 
       default:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        if (args is HomePageArgs) {
+          return MaterialPageRoute(
+              builder: (_) => HomePage(
+                    user: args.user,
+                  ));
+        } else {
+          return _errorRoute();
+        }
     }
   }
 }
@@ -61,6 +70,13 @@ Route<dynamic> _errorRoute() {
         child: Text('ERROR'),
       ),
     );
+  });
+}
+
+class HomePageArgs {
+  final UserModel user;
+  HomePageArgs({
+    required this.user,
   });
 }
 
