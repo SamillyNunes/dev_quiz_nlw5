@@ -1,15 +1,16 @@
 import 'package:dev_quiz/view/challenge/challenge_page.dart';
 import 'package:dev_quiz/view/home/home_page.dart';
+import 'package:dev_quiz/view/login/login_page.dart';
 import 'package:dev_quiz/view/result/result_page.dart';
 import 'package:dev_quiz/view/shared/models/question_model.dart';
 import 'package:dev_quiz/view/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
-
 const String splashRoute = "/";
 const String homeRoute = "/home";
 const String challengeRoute = "/challenge";
 const String resultRoute = "/result";
+const String loginRoute = "/login";
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -41,6 +42,8 @@ class AppRouter {
         } else {
           return _errorRoute();
         }
+      case loginRoute:
+        return MaterialPageRoute(builder: (_) => LoginPage());
 
       default:
         return MaterialPageRoute(builder: (_) => HomePage());
