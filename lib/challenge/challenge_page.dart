@@ -1,5 +1,7 @@
 import 'package:dev_quiz/challenge/challenge_controller.dart';
+import 'package:dev_quiz/core/app_routes.dart';
 import 'package:dev_quiz/result/result_page.dart';
+import 'package:dev_quiz/routers/routers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/challenge/widgets/next_button/next_button_widget.dart';
@@ -113,14 +115,13 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.green(
                       label: "Confirmar",
                       onTap: () {
-                        Navigator.pushReplacement(
+                        Navigator.pushReplacementNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => ResultPage(
-                              quizTitle: widget.quizTitle,
-                              questionsLenght: widget.questions.length,
-                              result: controller.qtdRightAnswers,
-                            ),
+                          AppRoutes.resultRoute,
+                          arguments: ResultPageArgs(
+                            quizTitle: widget.quizTitle,
+                            questionsLenght: widget.questions.length,
+                            result: controller.qtdRightAnswers,
                           ),
                         );
                       },
