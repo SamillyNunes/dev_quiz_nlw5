@@ -1,8 +1,10 @@
 import 'package:dev_quiz/view/challenge/widgets/next_button/next_button_widget.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/core/app_images.dart';
 import 'package:dev_quiz/core/app_text_styles.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ResultPage extends StatelessWidget {
@@ -19,7 +21,12 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
+
     return Scaffold(
+      backgroundColor:
+          settingsController.currentAppTheme.scaffoldBackgroundColor,
       body: Container(
         width: double.maxFinite, //o maximo possivel
         padding: const EdgeInsets.only(top: 100),
@@ -34,7 +41,9 @@ class ResultPage extends StatelessWidget {
               children: [
                 Text(
                   "Parabéns!",
-                  style: AppTextStyles.heading40,
+                  style: AppTextStyles.heading40.copyWith(
+                    color: settingsController.currentAppTheme.primaryColor,
+                  ),
                 ),
                 Container(
                   width: 189,
@@ -42,15 +51,23 @@ class ResultPage extends StatelessWidget {
                   child: Text.rich(
                     TextSpan(
                       text: "Você concluiu ",
-                      style: AppTextStyles.body,
+                      style: AppTextStyles.body.copyWith(
+                        color: settingsController.currentAppTheme.primaryColor,
+                      ),
                       children: [
                         TextSpan(
                           text: "\n${this.quizTitle}\n",
-                          style: AppTextStyles.bodyBold,
+                          style: AppTextStyles.bodyBold.copyWith(
+                            color:
+                                settingsController.currentAppTheme.primaryColor,
+                          ),
                         ),
                         TextSpan(
                           text: " com $result de $questionsLenght acertos.",
-                          style: AppTextStyles.body,
+                          style: AppTextStyles.body.copyWith(
+                            color:
+                                settingsController.currentAppTheme.primaryColor,
+                          ),
                         ),
                       ],
                     ),

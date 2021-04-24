@@ -1,7 +1,10 @@
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/core/core.dart';
+import 'package:provider/provider.dart';
+
 class QuestionIndicatorWidget extends StatelessWidget {
   final int currentPage;
   final int pagesLenght;
@@ -14,6 +17,8 @@ class QuestionIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
@@ -26,11 +31,15 @@ class QuestionIndicatorWidget extends StatelessWidget {
             children: [
               Text(
                 "Questão $currentPage",
-                style: AppTextStyles.body,
+                style: AppTextStyles.body.copyWith(
+                  color: settingsController.currentAppTheme.primaryColor,
+                ),
               ),
               Text(
                 "de $pagesLenght",
-                style: AppTextStyles.body,
+                style: AppTextStyles.body.copyWith(
+                  color: settingsController.currentAppTheme.primaryColor,
+                ),
               ),
             ],
           ),

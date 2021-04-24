@@ -6,8 +6,10 @@ import 'package:dev_quiz/view/home/home_state.dart';
 import 'package:dev_quiz/view/home/widgets/appbar/app_bar_widget.dart';
 import 'package:dev_quiz/view/home/widgets/level_button/level_button_widget.dart';
 import 'package:dev_quiz/view/home/widgets/quiz_card/quiz_card_widget.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   final UserModel user;
@@ -35,8 +37,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
     if (controller.state == HomeState.success) {
       return Scaffold(
+        backgroundColor:
+            settingsController.currentAppTheme.scaffoldBackgroundColor,
         appBar: AppBarWidget(
           // perceba que aqui usamos o ! para garantir ao dart que o usuario nao sera nulo
           user: widget.user,

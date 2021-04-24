@@ -1,6 +1,8 @@
 import 'package:dev_quiz/core/core.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/models/answer_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AnswerWidget extends StatelessWidget {
   final AnswerModel answerModel;
@@ -37,6 +39,9 @@ class AnswerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       // ignore pointer vai desativar o recurso de clique em um botao, por exemplo
@@ -45,12 +50,13 @@ class AnswerWidget extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             //devolvendo se a resposta eh certa ou errada
-            print("is answer right? ${answerModel.isRight}");
             onTap(answerModel.isRight);
           },
           child: Container(
             decoration: BoxDecoration(
-              color: isSelected ? _selectedColorCardRight : AppColors.white,
+              color: isSelected
+                  ? _selectedColorCardRight
+                  : settingsController.currentAppTheme.primaryColor,
               borderRadius: BorderRadius.circular(10),
               border: Border.fromBorderSide(BorderSide(
                 color: isSelected ? _selectedBorderCardRight : AppColors.border,

@@ -1,13 +1,13 @@
-
 import 'package:dev_quiz/core/app_routes.dart';
 import 'package:dev_quiz/routers/routers.dart';
 import 'package:dev_quiz/view/challenge/challenge_controller.dart';
 import 'package:dev_quiz/view/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:dev_quiz/view/challenge/widgets/question_indicator/question_indicator_widget.dart';
 import 'package:dev_quiz/view/challenge/widgets/quiz/quiz_widget.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/models/question_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
@@ -52,7 +52,11 @@ class _ChallengePageState extends State<ChallengePage> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
     return Scaffold(
+      backgroundColor:
+          settingsController.currentAppTheme.scaffoldBackgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(102),
         child: SafeArea(
