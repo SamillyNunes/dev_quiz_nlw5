@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBarWidget(
           // perceba que aqui usamos o ! para garantir ao dart que o usuario nao sera nulo
           user: widget.user,
+          context: context,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(

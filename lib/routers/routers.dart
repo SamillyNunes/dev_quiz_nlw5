@@ -1,3 +1,4 @@
+import 'package:dev_quiz/view/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/view/challenge/challenge_page.dart';
@@ -13,6 +14,7 @@ const String homeRoute = "/home";
 const String challengeRoute = "/challenge";
 const String resultRoute = "/result";
 const String loginRoute = "/login";
+const String settingsRoute = "/settings";
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -46,6 +48,8 @@ class AppRouter {
         }
       case loginRoute:
         return MaterialPageRoute(builder: (_) => LoginPage());
+      case settingsRoute:
+        return MaterialPageRoute(builder: (_) => SettingsPage());
 
       default:
         if (args is HomePageArgs) {
