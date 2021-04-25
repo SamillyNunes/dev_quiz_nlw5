@@ -28,8 +28,10 @@ class _QuizWidgetState extends State<QuizWidget> {
 
   @override
   Widget build(BuildContext context) {
+
     SettingsController settingsController =
         Provider.of<SettingsController>(context);
+        
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16.0,

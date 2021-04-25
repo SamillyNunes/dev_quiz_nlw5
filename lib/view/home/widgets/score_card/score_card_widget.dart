@@ -1,7 +1,10 @@
+import 'package:dev_quiz/core/app_theme.dart';
 import 'package:dev_quiz/view/home/widgets/chart/chart_widget.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/core/core.dart';
+import 'package:provider/provider.dart';
 
 class ScoreCardWidget extends StatelessWidget {
   final double scorePercentage;
@@ -13,6 +16,8 @@ class ScoreCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
     return Padding(
       padding: const EdgeInsets.only(
         left: 20,
@@ -23,7 +28,8 @@ class ScoreCardWidget extends StatelessWidget {
         height: 136,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: AppColors.white,
+          color: AppTheme.backgroundColors(
+              settingsController.currentAppTheme.brightness),
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: AppColors.lightGrey,
@@ -52,11 +58,17 @@ class ScoreCardWidget extends StatelessWidget {
                     children: [
                       Text(
                         "Vamos começar",
-                        style: AppTextStyles.heading,
+                        style: AppTextStyles.heading.copyWith(
+                          color:
+                              settingsController.currentAppTheme.primaryColor,
+                        ),
                       ),
                       Text(
                         "Complete os desafios e avance em conhecimento",
-                        style: AppTextStyles.body,
+                        style: AppTextStyles.body.copyWith(
+                          color:
+                              settingsController.currentAppTheme.primaryColor,
+                        ),
                       ),
                     ],
                   ),

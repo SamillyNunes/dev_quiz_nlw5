@@ -64,7 +64,9 @@ class _ChallengePageState extends State<ChallengePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BackButton(),
+              BackButton(
+                color: settingsController.currentAppTheme.primaryColor,
+              ),
               // o value listenable vai fazer o rebuild so nesse componente quando houver atualizacoes
               ValueListenableBuilder<int>(
                 valueListenable: controller.currentPageNotifier,

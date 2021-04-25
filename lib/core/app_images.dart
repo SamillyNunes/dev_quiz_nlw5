@@ -8,4 +8,5 @@ class AppImages {
   static String get trophy => "assets/images/trophy.png";
   static String get logo => "assets/images/logo.png";
   static String get colorfulLogo => "assets/images/colorful_logo.png";
+  static String get blackgroundLogo => "assets/images/blackground-logo.png";
 }

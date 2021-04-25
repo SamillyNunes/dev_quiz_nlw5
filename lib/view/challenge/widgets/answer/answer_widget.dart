@@ -1,3 +1,4 @@
+import 'package:dev_quiz/core/app_theme.dart';
 import 'package:dev_quiz/core/core.dart';
 import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/models/answer_model.dart';
@@ -56,7 +57,8 @@ class AnswerWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: isSelected
                   ? _selectedColorCardRight
-                  : settingsController.currentAppTheme.primaryColor,
+                  : AppTheme.backgroundColors(
+                      settingsController.currentAppTheme.brightness),
               borderRadius: BorderRadius.circular(10),
               border: Border.fromBorderSide(BorderSide(
                 color: isSelected ? _selectedBorderCardRight : AppColors.border,
@@ -74,7 +76,10 @@ class AnswerWidget extends StatelessWidget {
                     answerModel.title,
                     style: isSelected
                         ? _selectedTextStyleRight
-                        : AppTextStyles.body,
+                        : AppTextStyles.body.copyWith(
+                            color:
+                                settingsController.currentAppTheme.primaryColor,
+                          ),
                   ),
                 ),
                 Container(
@@ -82,7 +87,10 @@ class AnswerWidget extends StatelessWidget {
                   height: 24,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: isSelected ? _selectedColorRight : AppColors.white,
+                    color: isSelected
+                        ? _selectedColorRight
+                        : AppTheme.backgroundColors(
+                            settingsController.currentAppTheme.brightness),
                     border: Border.fromBorderSide(BorderSide(
                       color:
                           isSelected ? _selectedBorderRight : AppColors.border,

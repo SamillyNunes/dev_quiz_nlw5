@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SettingsController settingsController =
         Provider.of<SettingsController>(context);
+        
     if (controller.state == HomeState.success) {
       return Scaffold(
         backgroundColor:

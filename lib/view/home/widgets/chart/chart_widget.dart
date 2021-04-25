@@ -1,7 +1,9 @@
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_quiz/core/app_colors.dart';
 import 'package:dev_quiz/core/core.dart';
+import 'package:provider/provider.dart';
 
 class ChartWidget extends StatefulWidget {
   final double percent;
@@ -44,6 +46,9 @@ class _ChartWidgetState extends State<ChartWidget>
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
+
     return Container(
       height: 80,
       width: 80,
@@ -67,7 +72,9 @@ class _ChartWidgetState extends State<ChartWidget>
             Center(
               child: Text(
                 "${(_animation.value * 100).toStringAsFixed(0)}%",
-                style: AppTextStyles.heading,
+                style: AppTextStyles.heading.copyWith(
+                  color: settingsController.currentAppTheme.primaryColor,
+                ),
               ),
             ),
           ],

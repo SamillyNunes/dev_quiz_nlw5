@@ -1,6 +1,9 @@
+import 'package:dev_quiz/core/app_theme.dart';
 import 'package:dev_quiz/core/core.dart';
+import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/shared/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class QuizCardWidget extends StatelessWidget {
   final String title;
@@ -18,6 +21,9 @@ class QuizCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController settingsController =
+        Provider.of<SettingsController>(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -28,7 +34,8 @@ class QuizCardWidget extends StatelessWidget {
               color: AppColors.border,
             ),
           ),
-          color: AppColors.white,
+          color: AppTheme.backgroundColors(
+              settingsController.currentAppTheme.brightness),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -46,7 +53,9 @@ class QuizCardWidget extends StatelessWidget {
             ),
             Text(
               this.title,
-              style: AppTextStyles.heading15,
+              style: AppTextStyles.heading15.copyWith(
+                color: settingsController.currentAppTheme.primaryColor,
+              ),
             ),
             SizedBox(
               height: 24,
@@ -57,7 +66,9 @@ class QuizCardWidget extends StatelessWidget {
                   flex: 1,
                   child: Text(
                     "${this.completed} de ${this.totalQuestions}",
-                    style: AppTextStyles.body11,
+                    style: AppTextStyles.body11.copyWith(
+                      color: settingsController.currentAppTheme.primaryColor,
+                    ),
                   ),
                 ),
                 Expanded(

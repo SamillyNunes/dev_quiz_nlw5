@@ -6,14 +6,16 @@ import 'package:provider/provider.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) => SettingsController(),
-      child: MaterialApp(
+
+    return Provider<SettingsController>(
+      create: (context) => SettingsController(),
+      builder: (context, _)=> MaterialApp(
         title: "DevQuiz",
         debugShowCheckedModeBanner: false,
         // home: SettingsPage(),
         initialRoute: "/",
         onGenerateRoute: AppRouter.generateRoute,
+        theme: context.watch<SettingsController>().currentAppTheme,
       ),
     );
   }

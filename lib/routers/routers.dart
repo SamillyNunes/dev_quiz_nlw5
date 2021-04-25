@@ -49,14 +49,23 @@ class AppRouter {
       case loginRoute:
         return MaterialPageRoute(builder: (_) => LoginPage());
       case settingsRoute:
-        return MaterialPageRoute(builder: (_) => SettingsPage());
+        if (args is SettingsPageArgs) {
+          return MaterialPageRoute(
+            builder: (_) => SettingsPage(
+              user: args.user,
+            ),
+          );
+        } else {
+          return _errorRoute();
+        }
 
       default:
         if (args is HomePageArgs) {
           return MaterialPageRoute(
-              builder: (_) => HomePage(
-                    user: args.user,
-                  ));
+            builder: (_) => HomePage(
+              user: args.user,
+            ),
+          );
         } else {
           return _errorRoute();
         }
@@ -80,6 +89,13 @@ Route<dynamic> _errorRoute() {
 class HomePageArgs {
   final UserModel user;
   HomePageArgs({
+    required this.user,
+  });
+}
+
+class SettingsPageArgs {
+  final UserModel user;
+  SettingsPageArgs({
     required this.user,
   });
 }

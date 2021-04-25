@@ -1,13 +1,24 @@
+import 'package:dev_quiz/routers/routers.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:dev_quiz/core/app_routes.dart';
 import 'package:dev_quiz/core/app_text_styles.dart';
 import 'package:dev_quiz/core/app_theme.dart';
 import 'package:dev_quiz/core/core.dart';
 import 'package:dev_quiz/view/settings/settings_controller.dart';
 import 'package:dev_quiz/view/settings/widgets/settings_tile.dart';
+import 'package:dev_quiz/view/shared/models/user_model.dart';
 import 'package:dev_quiz/view/shared/widgets/gradient_app_bar_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
+  final UserModel user;
+
+  const SettingsPage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -33,7 +44,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.popAndPushNamed(
+                      context,
+                      AppRoutes.homeRoute,
+                      arguments: HomePageArgs(user: widget.user),
+                    );
                   },
                   child: Icon(
                     Icons.arrow_back_ios,
