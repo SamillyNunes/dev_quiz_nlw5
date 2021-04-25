@@ -19,6 +19,26 @@ class ResultPage extends StatelessWidget {
     required this.result,
   }) : super(key: key);
 
+  double get percentage => this.result / this.questionsLenght;
+
+  String get resultImage => this.percentage < 0.5
+      ? AppImages.badResult
+      : ((this.percentage < 1 && this.percentage > 0.5)
+          ? AppImages.mediumResult
+          : AppImages.trophy);
+
+  String get title => this.percentage < 0.5
+      ? "Que triste!"
+      : ((this.percentage < 1 && this.percentage > 0.5)
+          ? "Continue assim!"
+          : "Parabéns!");
+
+  String get subtitle => this.percentage < 0.5
+      ? "Você só fez $result de $questionsLenght questões. Tente novamente para fixar o conhecimento"
+      : ((this.percentage < 1 && this.percentage > 0.5)
+          ? "Você fez $result de $questionsLenght questões. Siga tentando e você chegará lá!"
+          : "Você acertou $result de $questionsLenght questões! Mostra a sua excelência!");
+
   @override
   Widget build(BuildContext context) {
     SettingsController settingsController =
@@ -35,12 +55,13 @@ class ResultPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              AppImages.trophy,
+              resultImage,
+              width: MediaQuery.of(context).size.width * 0.8,
             ),
             Column(
               children: [
                 Text(
-                  "Parabéns!",
+                  this.title,
                   style: AppTextStyles.heading40.copyWith(
                     color: settingsController.currentAppTheme.primaryColor,
                   ),
@@ -48,29 +69,8 @@ class ResultPage extends StatelessWidget {
                 Container(
                   width: 189,
                   padding: const EdgeInsets.only(top: 16),
-                  child: Text.rich(
-                    TextSpan(
-                      text: "Você concluiu ",
-                      style: AppTextStyles.body.copyWith(
-                        color: settingsController.currentAppTheme.primaryColor,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "\n${this.quizTitle}\n",
-                          style: AppTextStyles.bodyBold.copyWith(
-                            color:
-                                settingsController.currentAppTheme.primaryColor,
-                          ),
-                        ),
-                        TextSpan(
-                          text: " com $result de $questionsLenght acertos.",
-                          style: AppTextStyles.body.copyWith(
-                            color:
-                                settingsController.currentAppTheme.primaryColor,
-                          ),
-                        ),
-                      ],
-                    ),
+                  child: Text(
+                    this.subtitle,
                     textAlign: TextAlign.center,
                   ),
                 ),

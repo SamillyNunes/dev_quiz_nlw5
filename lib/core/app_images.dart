@@ -9,4 +9,6 @@ class AppImages {
   static String get logo => "assets/images/logo.png";
   static String get colorfulLogo => "assets/images/colorful_logo.png";
   static String get blackgroundLogo => "assets/images/blackground-logo.png";
+  static String get badResult => "assets/images/bad-review.png";
+  static String get mediumResult => "assets/images/positive-vote.png";
 }
