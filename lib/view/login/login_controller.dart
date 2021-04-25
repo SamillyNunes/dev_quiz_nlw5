@@ -43,4 +43,26 @@ class LoginController {
     this.isLoading = false;
     return false;
   }
+
+  Future<bool> signOut({required BuildContext context}) async {
+    this.isLoading = true;
+
+    try {
+      Authentication.signOut(context: context);
+      this.name = null;
+      this.profileUrl = null;
+      this.isLoggedIn = false;
+      this.isLoading = false;
+      return true;
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        Authentication.messageSnackBar(
+          message: "Um erro ocorreu. Tente novamente.",
+        ),
+      );
+    }
+
+    this.isLoading = false;
+    return false;
+  }
 }

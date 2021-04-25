@@ -1,4 +1,6 @@
 import 'package:dev_quiz/routers/routers.dart';
+import 'package:dev_quiz/view/challenge/widgets/next_button/next_button_widget.dart';
+import 'package:dev_quiz/view/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -73,6 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
           vertical: deviceSize.height * 0.05,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ValueListenableBuilder(
               valueListenable: controller.themeNotifier,
@@ -83,6 +86,31 @@ class _SettingsPageState extends State<SettingsPage> {
                   print("entrou aqui");
                   controller.changeCurrentAppTheme();
                   setState(() {});
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: deviceSize.width * 0.1,
+          vertical: deviceSize.height * 0.05,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: NextButtonWidget.purple(
+                label: "Sair",
+                onTap: () async {
+                  LoginController loginController = LoginController();
+                  bool signedOut =
+                      await loginController.signOut(context: context);
+
+                  if (signedOut) {
+                    Navigator.pushReplacementNamed(
+                        context, AppRoutes.loginRoute);
+                  }
                 },
               ),
             ),
