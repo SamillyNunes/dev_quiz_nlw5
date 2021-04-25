@@ -16,10 +16,12 @@ dependencies:
   firebase_auth: ^1.1.1
   provider: ^5.0.0
   shared_preferences: ^2.0.5
+  firebase_database: ^6.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
 
 flutter:
   assets:
@@ -27,3 +29,9 @@ flutter:
     - database/
 
   uses-material-design: true
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png"
